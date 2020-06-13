@@ -9,27 +9,26 @@ var result = [];
 
 
 
-var randomUpperC = upperC[Math.floor(Math.random()*upperC.length)];
-var randomlowerC = lowerC[Math.floor(Math.random()*lowerC.length)];
-var randomnumeric = numeric[Math.floor(Math.random() * numeric.length)];
-var randomspecChter = specChter[Math.floor(Math.random()*specChter.length)];
+
+
+
+
 
 // console.log("These are random character " + randomUpperC, randomlowerC, randomnumeric, randomspecChter)var
-// for(var i = 0; i < lenght; i++) {
-//   console.log(specChter[i])
+// for(var i = 0; i < specChter.lenght; i++) {
+// console.log(specChter[i])
 // };
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
   
-  console.log("These are random character " + randomUpperC + randomlowerC + randomnumeric + randomspecChter);
-  var Plength= window.prompt("Choose from 8 - 128 the length of the password");
+ var Plength= window.prompt("Choose from 8 - 128 the length of the password");
   if (Plength < 8 || Plength > 128) {
     window.alert("You need to provide a valid answer! Please try again.");
       return writePassword();
+  
   };
 
   var firstConfirm = window.confirm("Would you like to have Upper Case");
@@ -39,33 +38,57 @@ function writePassword() {
  if(firstConfirm == false && secondConfirm == false && thirdConfirm == false && fourthConfirm == false)
  {
    alert("you need to pick at least one type!");
- }
- while(result.length <= Plength){
+ };
+
+ while(result.length <= Plength-1){
+
 if(firstConfirm == true)
  {
+  var randomUpperC = upperC[Math.floor(Math.random()*upperC.length)];
    result.push(randomUpperC)
+  if(result.length==Plength) {
+    break;
+  }
  }
- else if(secondConfirm == true)
+  
+ if(secondConfirm == true)
  {
+  var randomlowerC = lowerC[Math.floor(Math.random()*lowerC.length)];
   result.push(randomlowerC)
+  if(result.length==Plength) {
+    break;
+  }
  }
- else if(thirdConfirm == true)
+ if(thirdConfirm == true)
  {
+  var randomnumeric = numeric[Math.floor(Math.random() * numeric.length)];
   result.push(randomnumeric)
+  if(result.length==Plength) {
+    break;
+  }
  }
 
- else if(fourthConfirm == true)
+if(fourthConfirm == true)
  {
+  var randomspecChter = specChter[Math.floor(Math.random()*specChter.length)];
   result.push(randomspecChter)
+  if(result.length==Plength) {
+    break;
+  }
  }
+
 }
-Console.log(result)
+console.log(result.length);
+console.log(result)
+
+
 // you need a while loop or a for loop that runs as long as the result array has the same length as the number input at the beginning
 
-  var password = generatePassword();
+ 
   var passwordText = document.querySelector("#password");
+  
 
-  passwordText.value = result.join(","); // it will change ["A", "v", 0, 0, "&", "A", "U"];  into one string, so it will look like: "Av00&AU";
+  passwordText.value = result.join(""); // it will change ["A", "v", 0, 0, "&", "A", "U"];  into one string, so it will look like: "Av00&AU";
 
 }
 // var divItem = document.createElement("div");
